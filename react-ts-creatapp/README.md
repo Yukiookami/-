@@ -1,0 +1,76 @@
+# 目录结构
+
+## 1. 项目结构
+
+```shell
+
+├── dist # 打包后的文件（也有可能是build，主要看打包命令怎么写）
+├── .storybook # storybook配置文件（如果使用了的话）
+├── config # webpack配置文件
+├── node_modules # 依赖包
+├── public # 静态资源（不会被构建工具处理，直接复制到构建目录中，public文件夹中的资源可以直接通过URL访问，一般静态图片，图标HTML，pdf等较大文件可以放在这里）
+│   ├── favicon.ico # 网站图标
+│   ├── index.html # 入口html文件
+│   ├── assets # 一些静态资源
+│   ├── manifest.json # PWA配置文件
+│   ├── robots.txt # 爬虫协议
+├── scripts # 启动脚本（和package.json中的script配置相关）
+│   ├── build.js # 打包脚本
+│   ├── start.js # 启动脚本
+│   ├── test.js # 测试脚本
+├── src # 源码
+│   ├── assets # 静态资源（和public不同的是，这里放置的资源会被打包压缩，一般放置的都是模块化文件（可以export/import），一般样式文件，一部分常量定义数据文件可以放在这里）
+│   │   ├── images # 图片
+│   │   ├── styles # 样式
+│   │   ├── data # 数据
+│   ├── context # 上下文
+│   ├── components # 组件
+│   │   ├── common # 公共组件
+│   │   │  ├── atom # 原子组件
+│   │   │  ├── molecule # 分子组件
+│   │   ├── layout # 布局组件
+│   │   ├── module # 模块组件
+│   │   ├── page # 页面组件
+│   ├── pages # 页面
+│   ├── router # 路由
+│   │   ├── index.tsx # 路由配置
+│   ├── services # 接口
+│   │   ├── api # 接口（封装axios等异步通讯手段）
+│   │   ├── request # 请求（一般在这里定义get/post/delete/put等请求方式，也可以在这里做一些特殊的参数处理）
+│   │   ├── status # 一些状态和常量
+│   ├── store # 状态管理 (Redux/Mobx)
+│   ├── utils # 工具函数
+│   │   ├── index.ts # 工具函数入口
+│   ├── App.tsx # 入口文件
+│   ├── index.tsx # 入口文件
+├── .gitignore # git忽略文件
+├── package.json # 项目配置文件
+├── README.md # 项目说明
+├── yarn.lock # yarn锁定文件/也有可能是package-lock.json
+├── tsconfig.json # TypeScript配置文件
+├── .env.development # 开发环境配置
+├── .env.production # 生产环境配置
+├── .env.test # 测试环境配置
+├── .eslintignore # eslint忽略文件
+
+```
+
+## 把所有的依赖升级为最新版本
+
+全局安装 npm-check-updates
+
+```shell
+npm install -g npm-check-updates
+```
+
+检查并更新 package.json 中的依赖版本：
+
+```shell
+ncu -u
+```
+
+安装最新版本的依赖：
+
+```shell
+npm install
+```
